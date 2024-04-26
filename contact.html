@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingCartApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <link rel="icon" href="/image/store(1).png"/>
+
+    <!-- remix icon cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+    <a href="home.html" class="logo"> <i class="ri-store-2-line"></i> DURASTER.</a>
+
+    <form action="#" class="search-form">
+        <input type="search" placeholder="search here..." id="search-box">
+        <label for="search-box" class="ri-search-line"></label>
+    </form>
+
+    <div class="icons">
+        <div id="login-btn" class="ri-user-line"></div>
+        <div id="menu-btn" class="ri-menu-line"></div>
+        <div id="search-btn" class="ri-search-line"></div>
+        <div id="wishlist-btn" class="ri-heart-line"></div>
+        <div id="cart-btn" class="ri-shopping-cart-line"></div>
+        <!--                <a href="#" class="ri-heart-line"></a>-->
+
+
+    </div>
+</header>
+
+<!-- header section ends  -->
+
+
+<!-- closer btn  -->
+
+<div id="closer" class="ri-close-line"></div>
+
+<!-- navbar start  -->
+
+<nav class="navbar">
+    <a href="home.html">home</a>
+    <a href="shop.html">shop</a>
+    <a href="about.html">about</a>
+    <a href="blog.html">blog</a>
+    <a href="contact.html">contact</a>
+</nav>
+
+<!-- navbar end  -->
+
+
+<!-- shopping cart start  -->
+
+
+<div class="shopping-cart" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Cart</h1>
+    <div class="box" ng-repeat="item in cartItems">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndex($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <span class="quantity">{{ item.quantity }}</span>
+            <span class="multiply"> x </span>
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <h3 class="total">Total: <span>{{ 'Rs. ' + getTotal().toFixed(2) }}</span></h3>
+    <a href="#" class="btn">Checkout Cart</a>
+</div>
+<!--wishlist start-->
+<div class="wishlist" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Wishlist</h1>
+
+    <div class="box" ng-repeat="item in list">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndexList($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <!--            <span class="quantity">{{ item.quantity }}</span>-->
+            <!--            <span class="multiply"> x </span>-->
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <a href="./shop.html" class="btn">Continue Shopping</a>
+</div>
+
+<!-- shopping cart end  -->
+
+
+<!-- login form start  -->
+
+<div class="login-form">
+    <form action="#">
+        <h3>login form</h3>
+        <input type="email" placeholder="enter your email" class="box">
+        <input type="password" placeholder="enter your password" class="box">
+        <div class="remember">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me">remember me</label>
+        </div>
+        <input type="submit" value="login now" class="btn">
+        <p>forget password? <a href="#">click here</a> </p>
+        <p>don't have an account? <a href="#">create now</a> </p>
+    </form>
+</div>
+
+<!-- login form end  -->
+
+
+<!-- heading section start -->
+
+<section class="heading">
+    <h3>our shop</h3>
+    <p> <a href="home.html">home</a> / <span>contact</span> </p>
+</section>
+
+<!-- heading section end -->
+
+
+<!-- contact section start -->
+
+<div class="contact">
+
+    <form action="#">
+        <h3>get in touch</h3>
+        <span>your name</span>
+        <input type="text" class="box">
+        <span>your number</span>
+        <input type="number" class="box">
+        <span>your email</span>
+        <input type="email" class="box">
+        <span>your message</span>
+        <textarea name="" id="" cols="30" rows="10" class="box"></textarea>
+        <input type="submit" value="send message" class="btn">
+    </form>
+
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110204.75443569123!2d77.93473309708199!3d30.325402625617453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929c356c888af%3A0x4c3562c032518799!2sDehradun%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1713563414741!5m2!1sen!2sin" width="400" height="470" style="border:1PX;"  ></iframe>
+</div>
+
+<!-- contact section end -->
+
+
+
+
+
+
+<!-- footer section start  -->
+<section class="footer">
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"> <i class="ri-arrow-right-line"></i> home </a>
+            <a href="shop.html"> <i class="ri-arrow-right-line"></i> shop </a>
+            <a href="about.html"> <i class="ri-arrow-right-line"></i> about </a>
+            <a href="team.html"> <i class="ri-arrow-right-line"></i> team </a>
+            <a href="blog.html"> <i class="ri-arrow-right-line"></i> blog </a>
+            <a href="contact.html"> <i class="ri-arrow-right-line"></i> contact </a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my order </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my wishlist </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my account </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my favorite </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> terms of user </a>
+        </div>
+
+        <div class="box">
+            <h3>Connect with Us</h3>
+            <a href="https://www.facebook.com"> <i class="ri-facebook-fill"></i> facebook </a>
+            <a href="https://twitter.com"> <i class="ri-twitter-fill"></i> twitter </a>
+            <a href="https://www.instagram.com"> <i class="ri-instagram-fill"></i> instagram </a>
+            <a href="https://www.linkedin.com"> <i class="ri-linkedin-box-fill"></i> linkedin </a>
+            <a href="https://www.pinterest.com"> <i class="ri-pinterest-fill"></i> pinterest </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <form action="#">
+                <input type="email" name="" placeholder="enter your email" id="">
+                <input type="submit" value="subscribe" class="btn">
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<section class="credit">
+Jaanhvi Saxena 2024
+</section>
+<!-- footer section end  -->
+
+<!-- custom js file link  -->
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>

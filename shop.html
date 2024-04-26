@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingCartApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shop</title>
+    <link rel="icon" href="/image/store(1).png"/>
+
+    <!-- remix icon cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+
+</head>
+
+<body ng-controller="ShoppingCartController">
+
+<!-- header section starts  -->
+
+<header class="header">
+    <a href="home.html" class="logo"> <i class="ri-store-2-line"></i> DURSATER </a>
+
+    <form action="#" class="search-form">
+        <input type="search" placeholder="search here..." id="search-box" ng-model="search">
+        <label for="search-box" class="ri-search-line"></label>
+    </form>
+
+    <div class="icons">
+        <div id="login-btn" class="ri-user-line"></div>
+        <div id="menu-btn" class="ri-menu-line"></div>
+        <div id="search-btn" class="ri-search-line"></div>
+        <div id="wishlist-btn" class="ri-heart-line"></div>
+        <div id="cart-btn" class="ri-shopping-cart-line"></div>
+        <!--                <a href="#" class="ri-heart-line"></a>-->
+
+
+    </div>
+</header>
+
+<!-- header section ends  -->
+
+
+<!-- closer btn  -->
+
+<div id="closer" class="ri-close-line"></div>
+
+<!-- navbar start  -->
+
+<nav class="navbar">
+    <a href="home.html">home</a>
+    <a href="shop.html">shop</a>
+    <a href="about.html">about</a>
+    <!--    <a href="team.html">team</a>-->
+    <a href="blog.html">blog</a>
+    <a href="contact.html">contact</a>
+</nav>
+
+<!-- navbar end  -->
+
+
+<!-- shopping cart start  -->
+
+<!--<div class="shopping-cart" ng-controller="ShoppingCartController">-->
+<!--    <div class="box  " ng-repeat="item in cartItems">-->
+<!--        <i class="ri-close-line close-icon" ng-click="removeItem(item.id)"></i>-->
+<!--        <img ng-src="{{ item.image }}" alt="">-->
+<!--        <div class="content">-->
+<!--            <h3>{{ item.name }}</h3>-->
+<!--            <span class="quantity">{{ item.quantity }}</span>-->
+<!--            <span class="multiply"> x </span>-->
+<!--            <span class="price">{{ '$' + (item.price * item.quantity).toFixed(2) }}</span>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <h3 class="total">Total: <span>{{ '$' + getTotal().toFixed(2) }}</span></h3>-->
+<!--    <a href="#" class="btn">Checkout Cart</a>-->
+<!--</div>-->
+
+<!-- shopping cart end  -->
+
+
+<!-- login form start  -->
+
+<div class="login-form">
+    <form action="#">
+        <h3>login form</h3>
+        <input type="email" placeholder="enter your email" class="box">
+        <input type="password" placeholder="enter your password" class="box">
+        <div class="remember">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me">remember me</label>
+        </div>
+        <input type="submit" value="login now" class="btn">
+        <p>forget password? <a href="#">click here</a></p>
+        <p>don't have an account? <a href="#">create now</a></p>
+    </form>
+</div>
+
+<!-- login form end  -->
+
+
+<!-- heading section start -->
+
+<section class="heading">
+    <h3>our shop</h3>
+    <p><a href="home.html">home</a> / <span>shop</span></p>
+</section>
+
+<!-- heading section end -->
+<!-- category section start -->
+
+<!--<section class="category">-->
+
+<!--    <h1 class="title"><span>our categories</span> <a href="#">view all >></a></h1>-->
+
+<!--    <div class="box-container">-->
+
+<!--        <a href="#" class="box">-->
+<!--            <img src="/image/icon-1.png" alt="">-->
+<!--            <h3>house sofa</h3>-->
+<!--        </a>-->
+
+<!--        <a href="#" class="box">-->
+<!--            <img src="/image/icon-2.png" alt="">-->
+<!--            <h3>working table</h3>-->
+<!--        </a>-->
+
+<!--        <a href="#" class="box">-->
+<!--            <img src="/image/icon-3.png" alt="">-->
+<!--            <h3>corner table</h3>-->
+<!--        </a>-->
+
+<!--        <a href="#" class="box">-->
+<!--            <img src="/image/icon-4.png" alt="">-->
+<!--            <h3>office chair</h3>-->
+<!--        </a>-->
+
+<!--        <a href="#" class="box">-->
+<!--            <img src="/image/icon-5.png" alt="">-->
+<!--            <h3>Dressing Tables</h3>-->
+<!--        </a>-->
+
+<!--    </div>-->
+<!--</section>-->
+<section class="category" >
+    <h1 class="title"><span>our categories</span> <a href="#">view all >></a></h1>
+
+    <div class="box-container">
+        <a href="#" class="box"  ng-click="setSort('Sofa')" onclick="disp()">
+            <img src="/image/icon-1.png" alt="">
+            <h3>House Sofa</h3>
+        </a>
+
+        <a href="#" class="box" ng-click="setSort('Table')" onclick="disp()">
+            <img src="/image/icon-2.png" alt="">
+            <h3>Table</h3>
+        </a>
+
+        <a href="#" class="box" ng-click="setSort('Center Table')" onclick="disp()">
+            <img src="/image/icon-3.png" alt="">
+            <h3>Center Table</h3>
+        </a>
+
+        <a href="#" class="box" ng-click="setSort('Office Chair')" onclick="disp()">
+            <img src="/image/icon-4.png" alt="">
+            <h3>Office Chair</h3>
+        </a>
+
+        <a href="#" class="box" ng-click="setSort('Dressing Table')" onclick="disp()">
+            <img src="/image/icon-5.png" alt="">
+            <h3>Dressing Table</h3>
+        </a>
+    </div>
+</section>
+
+<!-- category section end -->
+
+<section class="products" style="display: none" id="displayOnsearch">
+
+    <h1 class="title"><span ng-bind="sort"></span> <a href="#">view all >></a></h1>
+
+    <div class="box-container">
+
+        <div class="box" ng-repeat="item in products|filter: { category: sort }">
+
+            <div class="icons">
+                <!-- Add ng-click to the "Add to Cart" icon -->
+                <a href="" class="ri-shopping-cart-line" ng-click="addItemToCart(item)"></a>
+                <a href="" class="ri-heart-line" ng-click="addItemToWishlist(item)"></a>+
+                <a href="" class="ri-eye-line" ></a>
+            </div>
+            <div class="image">
+                <img src="{{ item.image }}" alt="">
+            </div>
+            <div class="content">
+                <h3>{{ item.name }}</h3>
+
+                <div class="price">{{ 'Rs. ' + item.price }}</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- products section start -->
+
+<section class="products" >
+
+    <h1 class="title"><span>our products</span> <a href="#">view all >></a></h1>
+
+    <div class="box-container">
+
+        <div class="box" ng-repeat="item in products|filter:search">
+
+            <div class="icons">
+                <!-- Add ng-click to the "Add to Cart" icon -->
+                <a href="" class="ri-shopping-cart-line" ng-click="addItemToCart(item)"></a>
+                <a href="" class="ri-heart-line" ng-click="addItemToWishlist(item)"></a>
+                <a href="" class="ri-eye-line" ></a>
+            </div>
+            <div class="image">
+                <img src="{{ item.image }}" alt="">
+            </div>
+            <div class="content">
+                <h3>{{ item.name }}</h3>
+
+                <div class="price">{{ 'Rs. ' + item.price }}</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- products section end -->
+
+
+<!-- footer section start  -->
+<section class="footer">
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"> <i class="ri-arrow-right-line"></i> home </a>
+            <a href="shop.html"> <i class="ri-arrow-right-line"></i> shop </a>
+            <a href="about.html"> <i class="ri-arrow-right-line"></i> about </a>
+            <a href="team.html"> <i class="ri-arrow-right-line"></i> team </a>
+            <a href="blog.html"> <i class="ri-arrow-right-line"></i> blog </a>
+            <a href="contact.html"> <i class="ri-arrow-right-line"></i> contact </a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my order </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my wishlist </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my account </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my favorite </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> terms of user </a>
+        </div>
+
+        <div class="box">
+            <h3>Connect with Us</h3>
+            <a href="https://www.facebook.com"> <i class="ri-facebook-fill"></i> facebook </a>
+            <a href="https://twitter.com"> <i class="ri-twitter-fill"></i> twitter </a>
+            <a href="https://www.instagram.com"> <i class="ri-instagram-fill"></i> instagram </a>
+            <a href="https://www.linkedin.com"> <i class="ri-linkedin-box-fill"></i> linkedin </a>
+            <a href="https://www.pinterest.com"> <i class="ri-pinterest-fill"></i> pinterest </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <h2>subscribe for latest updates</h2>
+            <form action="#">
+                <input type="email" name="" placeholder="enter your email" id="">
+                <input type="submit" value="subscribe" class="btn">
+            </form>
+        </div>
+
+    </div>
+</section>
+<div class="shopping-cart" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Cart</h1>
+    <div class="box" ng-repeat="item in cartItems">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndex($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <span class="quantity">{{ item.quantity }}</span>
+            <span class="multiply"> x </span>
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <h3 class="total">Total: <span>{{ 'Rs. ' + getTotal().toFixed(2) }}</span></h3>
+    <a href="shop.html" class="btn">Checkout Cart</a>
+</div>
+<!--wishlist start-->
+<div class="wishlist" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Wishlist</h1>
+
+    <div class="box" ng-repeat="item in list">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndexList($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <!--            <span class="quantity">{{ item.quantity }}</span>-->
+            <!--            <span class="multiply"> x </span>-->
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <a href="./shop.html" class="btn">Continue Shopping</a>
+</div>
+<!--wishlist end--><section class="credit">
+    Jaanhvi Saxena 2024
+</section>
+<!-- footer section end  -->
+
+<!-- custom js file link  -->
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>

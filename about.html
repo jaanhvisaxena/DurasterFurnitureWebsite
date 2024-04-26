@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingCartApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="icon" href="/image/store(1).png"/>
+
+    <!-- remix icon cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+
+</head>
+
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+    <a href="home.html" class="logo"> <i class="ri-store-2-line"></i> DURASTER </a>
+
+    <form action="#" class="search-form">
+        <input type="search" placeholder="search here..." id="search-box">
+        <label for="search-box" class="ri-search-line"></label>
+    </form>
+    <div class="icons">
+        <div id="login-btn" class="ri-user-line"></div>
+        <div id="menu-btn" class="ri-menu-line"></div>
+        <div id="search-btn" class="ri-search-line"></div>
+        <div id="wishlist-btn" class="ri-heart-line"></div>
+        <div id="cart-btn" class="ri-shopping-cart-line"></div>
+        <!--                <a href="#" class="ri-heart-line"></a>-->
+
+
+    </div>
+
+</header>
+
+<!-- header section ends  -->
+
+
+<!-- closer btn  -->
+
+<div id="closer" class="ri-close-line"></div>
+
+<!-- navbar start  -->
+
+<nav class="navbar">
+    <a href="home.html">home</a>
+    <a href="shop.html">shop</a>
+    <a href="about.html">about</a>
+    <a href="blog.html">blog</a>
+    <a href="contact.html">contact</a>
+</nav>
+
+<!-- navbar end  -->
+
+
+<!-- shopping cart start  -->
+
+
+<div class="shopping-cart" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Cart</h1>
+    <div class="box" ng-repeat="item in cartItems">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndex($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <span class="quantity">{{ item.quantity }}</span>
+            <span class="multiply"> x </span>
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <h3 class="total">Total: <span>{{ 'Rs. ' + getTotal().toFixed(2) }}</span></h3>
+    <a href="#" class="btn">Checkout Cart</a>
+</div>
+<!--wishlist start-->
+<div class="wishlist" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Wishlist</h1>
+
+    <div class="box" ng-repeat="item in list">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndexList($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <!--            <span class="quantity">{{ item.quantity }}</span>-->
+            <!--            <span class="multiply"> x </span>-->
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <a href="./shop.html" class="btn">Continue Shopping</a>
+</div>
+
+
+<!-- shopping cart end  -->
+
+
+<!-- login form start  -->
+
+<div class="login-form">
+    <form action="#">
+        <h3>login form</h3>
+        <input type="email" placeholder="enter your email" class="box">
+        <input type="password" placeholder="enter your password" class="box">
+        <div class="remember">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me">remember me</label>
+        </div>
+        <input type="submit" value="login now" class="btn">
+        <p>forget password? <a href="#">click here</a> </p>
+        <p>don't have an account? <a href="#">create now</a> </p>
+    </form>
+</div>
+
+<!-- login form end  -->
+
+
+<!-- heading section start -->
+
+<section class="heading">
+    <h3>our shop</h3>
+    <p> <a href="home.html">home</a> / <span>about</span> </p>
+</section>
+
+<!-- heading section end -->
+
+
+<!-- about section start -->
+
+<section class="about">
+
+    <div class="image">
+        <img src="/image/about.jpg" alt="">
+    </div>
+
+    <div class="content">
+        <span>welcome to our shop</span>
+        <h3>we make your home more astonishing</h3>
+        <p style="text-transform: none">Welcome to Duraster, where we believe that every piece of furniture tells a story.
+
+            Our journey began with a passion for craftsmanship and a commitment to quality. With years of experience in the industry, we've honed our skills to bring you exquisite furniture pieces that elevate your living spaces.
+            At Duraster, we understand that your home is a reflection of your unique style and personality. That's why we offer a diverse range of designs, from timeless classics to modern marvels, ensuring there's something for every taste.
+            Quality is at the heart of everything we do. Each piece in our collection is meticulously crafted using the finest materials and techniques, ensuring durability and longevity. We believe that furniture should not only be beautiful but also functional, providing comfort and convenience for everyday living.
+            But our commitment goes beyond just creating exceptional furniture. We're dedicated to providing exceptional customer service, guiding you through every step of your shopping journey. Whether you're browsing online or visiting our showroom, our knowledgeable team is here to assist you in finding the perfect pieces for your home.
+            Welcome to a world of timeless elegance and impeccable craftsmanship. Welcome to Duraster.</p>
+        <a href="#" class="btn">read more</a>
+    </div>
+
+</section>
+
+<!-- about section end -->
+
+
+<!-- services section start -->
+
+<section class="services">
+
+    <h1 class="title"> <span>our services</span> <a href="#">view all >></a> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="../image/serv-1.png" alt="">
+            <h3>product selling</h3>
+            <p style="text-transform: none; ">Find products that are not only aesthetic but also provide comfort. </p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="/image/serv-2.png" alt="">
+            <h3>product designing</h3>
+            <p style="text-transform: none">Hire out team of designers to get a customized piece of furniture.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="/image/serv-3.png" alt="">
+            <h3>24 / 7 support</h3>
+            <p style="text-transform: none">Feel free to get in touch with us any time, any day! We are happy to help you.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- services section end -->
+
+
+<!-- team section start -->
+
+<section class="team">
+
+    <h1 class="title"> <span>our team</span> <a href="#">view all >></a> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="share">
+                <a href="#" class="ri-facebook-fill"></a>
+                <a href="#" class="ri-twitter-fill"></a>
+                <a href="#" class="ri-pinterest-fill"></a>
+                <a href="#" class="ri-instagram-fill"></a>
+            </div>
+            <div class="image">
+                <img src="/image/team(2).jpeg" alt="">
+            </div>
+            <div class="user">
+                <h3>Hannah Jones</h3>
+                <span>designer</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="share">
+                <a href="#" class="ri-facebook-fill"></a>
+                <a href="#" class="ri-twitter-fill"></a>
+                <a href="#" class="ri-pinterest-fill"></a>
+                <a href="#" class="ri-instagram-fill"></a>
+            </div>
+            <div class="image">
+                <img src="/image/team(3).jpeg" alt="">
+            </div>
+            <div class="user">
+                <h3>John Thomas</h3>
+                <span>designer</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="share">
+                <a href="#" class="ri-facebook-fill"></a>
+                <a href="#" class="ri-twitter-fill"></a>
+                <a href="#" class="ri-pinterest-fill"></a>
+                <a href="#" class="ri-instagram-fill"></a>
+            </div>
+            <div class="image">
+                <img src="/image/team(4).jpeg" alt="">
+            </div>
+            <div class="user">
+                <h3>Jane Eyre</h3>
+                <span>designer</span>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</section>
+
+<!-- team section end -->
+
+
+
+
+<!-- footer section start  -->
+<section class="footer">
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"> <i class="ri-arrow-right-line"></i> home </a>
+            <a href="shop.html"> <i class="ri-arrow-right-line"></i> shop </a>
+            <a href="about.html"> <i class="ri-arrow-right-line"></i> about </a>
+            <a href="team.html"> <i class="ri-arrow-right-line"></i> team </a>
+            <a href="blog.html"> <i class="ri-arrow-right-line"></i> blog </a>
+            <a href="contact.html"> <i class="ri-arrow-right-line"></i> contact </a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my order </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my wishlist </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my account </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my favorite </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> terms of user </a>
+        </div>
+
+        <div class="box">
+            <h3>Connect with Us</h3>
+            <a href="https://www.facebook.com"> <i class="ri-facebook-fill"></i> facebook </a>
+            <a href="https://twitter.com"> <i class="ri-twitter-fill"></i> twitter </a>
+            <a href="https://www.instagram.com"> <i class="ri-instagram-fill"></i> instagram </a>
+            <a href="https://www.linkedin.com"> <i class="ri-linkedin-box-fill"></i> linkedin </a>
+            <a href="https://www.pinterest.com"> <i class="ri-pinterest-fill"></i> pinterest </a>
+        </div>
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <form action="#">
+                <input type="email" name="" placeholder="enter your email" id="">
+                <input type="submit" value="subscribe" class="btn">
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<section class="credit">
+    Jaanhvi saxena 2024
+</section>
+<!-- footer section end  -->
+
+<!-- custom js file link  -->
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingCartApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+    <link rel="icon" href="/image/store(1).png"/>
+
+    <!-- remix icon cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+    <a href="home.html" class="logo"> <i class="ri-store-2-line"></i> DURASTER </a>
+
+    <form action="#" class="search-form">
+        <input type="search" placeholder="search here..." id="search-box">
+        <label for="search-box" class="ri-search-line"></label>
+    </form>
+
+    <div class="icons">
+        <div id="login-btn" class="ri-user-line"></div>
+        <div id="menu-btn" class="ri-menu-line"></div>
+        <div id="search-btn" class="ri-search-line"></div>
+        <div id="wishlist-btn" class="ri-heart-line"></div>
+        <div id="cart-btn" class="ri-shopping-cart-line"></div>
+        <!--                <a href="#" class="ri-heart-line"></a>-->
+
+
+    </div>
+
+</header>
+
+<!-- header section ends  -->
+
+
+<!-- closer btn  -->
+
+<div id="closer" class="ri-close-line"></div>
+
+<!-- navbar start  -->
+
+<nav class="navbar">
+    <a href="home.html">home</a>
+    <a href="shop.html">shop</a>
+    <a href="about.html">about</a>
+    <a href="blog.html">blog</a>
+    <a href="contact.html">contact</a>
+</nav>
+
+<!-- navbar end  -->
+
+
+<!-- shopping cart start  -->
+
+<div class="shopping-cart" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Cart</h1>
+    <div class="box" ng-repeat="item in cartItems">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndex($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <span class="quantity">{{ item.quantity }}</span>
+            <span class="multiply"> x </span>
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <h3 class="total">Total: <span>{{ 'Rs. ' + getTotal().toFixed(2) }}</span></h3>
+    <a href="#" class="btn">Checkout Cart</a>
+</div>
+<!--wishlist start-->
+<div class="wishlist" ng-controller="ShoppingCartController">
+    <h1 style="color: white ; text-align: center; padding-bottom: 5rem">Your Wishlist</h1>
+
+    <div class="box" ng-repeat="item in list">
+        <i class="ri-close-line close-icon" ng-click="removeItemByIndexList($index)"></i>
+        <img ng-src="{{ item.image }}" alt="">
+        <div class="content">
+            <h3>{{ item.name }}</h3>
+            <!--            <span class="quantity">{{ item.quantity }}</span>-->
+            <!--            <span class="multiply"> x </span>-->
+            <span class="price">{{ 'Rs. ' + (item.price).toFixed(2) }}</span>
+        </div>
+    </div>
+    <a href="./shop.html" class="btn">Continue Shopping</a>
+</div>
+<!-- shopping cart end  -->
+
+
+<!-- login form start  -->
+
+<div class="login-form">
+    <form action="#">
+        <h3>login form</h3>
+        <input type="email" placeholder="enter your email" class="box">
+        <input type="password" placeholder="enter your password" class="box">
+        <div class="remember">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me">remember me</label>
+        </div>
+        <input type="submit" value="login now" class="btn">
+        <p>forget password? <a href="#">click here</a> </p>
+        <p>don't have an account? <a href="#">create now</a> </p>
+    </form>
+</div>
+
+<!-- login form end  -->
+
+
+<!-- heading section start -->
+
+<section class="heading">
+    <h3>our shop</h3>
+    <p> <a href="home.html">home</a> / <span>blog</span> </p>
+</section>
+
+<!-- heading section end -->
+
+
+<!-- blog section start -->
+
+<section class="blog">
+
+    <h1 class="title"> <span>our blogs</span> <a href="#">view all >></a> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog(1).jpeg" alt="">
+            </div>
+            <div class="content">
+                <h3>How to Choose the Perfect Sofa for Your Living Room</h3>
+                <p>Discover tips on selecting the ideal sofa that complements your living room decor.</p>
+                <a href="#" class="btn">read more</a>
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 1st April, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by alicia smith </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog(1).png" alt="">
+            </div>
+            <div class="content">
+                <h3>10 Creative Ideas for Bedroom Furniture Arrangement</h3>
+                <p style="text-transform: none">Explore innovative ways to arrange bedroom furniture for a stylish and functional space.</p>
+
+
+                <a href="#" class="btn">read more</a>
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 21st April, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by taylor swift </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog(3).jpeg" alt="">
+            </div>
+            <div class="content">
+                <h3>5 Tips for Arranging Furniture in Small Bedrooms</h3>
+                <p style="text-transform: none">Discover clever strategies for maximizing space and creating a cozy ambiance.</p>
+                <a href="#" class="btn">read more</a>
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 21st May, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> Alex Turner </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog(4).jpeg" alt="">
+            </div>
+            <div class="content">
+                <h3>Incorporating Feng Shui Principles into Your Living Room Design</h3>
+                <p style="text-transform: none">Learn how to arrange your bedroom furniture according to Feng Shui principles to promote harmony, relaxation, and positive energy flow.</p>
+
+                <a href="#" class="btn">read more</a>
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 19th April, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> matty healy </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog(5).jpeg" alt="">
+            </div>
+            <div class="content">
+                <h3>Mix and Match Furniture Styles for your drawing Room </h3>
+                <p style="text-transform: none">Explore how to blend different furniture styles and aesthetics to create a unique and visually dynamic bedroom design.</p>
+
+                <a href="#" class="btn">read more</a>
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 21st january, 2024 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by lana del rey </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="/image/blog(7).jpeg" alt="">
+            </div>
+            <div class="content">
+
+                <h3>Optimizing Furniture at your home</h3>
+                <p style="text-transform: none">Dive into the science of sleep ergonomics and discover optimal furniture arrangements and placement techniques to improve your sleep quality and overall well-being.</p>
+                <a href="#" class="btn">read more</a>
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> 21st may, 2023 </a>
+                    <a href="#"> <i class="fas fa-user"></i> by olivia rodrigo </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blog section end -->
+
+
+
+
+
+
+<!-- footer section start  -->
+<section class="footer">
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"> <i class="ri-arrow-right-line"></i> home </a>
+            <a href="shop.html"> <i class="ri-arrow-right-line"></i> shop </a>
+            <a href="about.html"> <i class="ri-arrow-right-line"></i> about </a>
+            <a href="team.html"> <i class="ri-arrow-right-line"></i> team </a>
+            <a href="blog.html"> <i class="ri-arrow-right-line"></i> blog </a>
+            <a href="contact.html"> <i class="ri-arrow-right-line"></i> contact </a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my order </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my wishlist </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my account </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> my favorite </a>
+            <a href="#"> <i class="ri-arrow-right-line"></i> terms of user </a>
+        </div>
+
+        <div class="box">
+            <h3>Connect with Us</h3>
+            <a href="https://www.facebook.com"> <i class="ri-facebook-fill"></i> facebook </a>
+            <a href="https://twitter.com"> <i class="ri-twitter-fill"></i> twitter </a>
+            <a href="https://www.instagram.com"> <i class="ri-instagram-fill"></i> instagram </a>
+            <a href="https://www.linkedin.com"> <i class="ri-linkedin-box-fill"></i> linkedin </a>
+            <a href="https://www.pinterest.com"> <i class="ri-pinterest-fill"></i> pinterest </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <form action="#">
+                <input type="email" name="" placeholder="enter your email" id="">
+                <input type="submit" value="subscribe" class="btn">
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<section class="credit">
+    Jaanhvi saxena 2024
+</section>
+<!-- footer section end  -->
+
+<!-- custom js file link  -->
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>
